@@ -1,0 +1,28 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug Rust component in Spin",
+            "type": "lldb",
+            "request": "launch",
+            "terminal": "console",
+            "sourceLanguages": ["rust"],
+            "preLaunchTask": "Spin build (debug)",
+            "initCommands": [
+                "settings set plugin.jit-loader.gdb.enable on",
+                "command script import \"${workspaceFolder}/.vscode/spin_debug.py\""
+            ],
+            "targetCreateCommands": [
+                "spin-debug-target"
+            ],
+            "processCreateCommands": [
+                "spin-debug-start \"${workspaceFolder}\"",
+                "type category enable wasm-rust",
+                "continue"
+            ],
+            "exitCommands": [
+                "spin-debug-stop"
+            ]
+        }
+    ]
+}

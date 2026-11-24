@@ -1,0 +1,21 @@
+[package]
+name = "spin-rust-debug"
+authors = ["Radu Matei <radu@fermyon.com>"]
+description = ""
+version = "0.1.0"
+rust-version = "1.94"
+edition = "2024"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+anyhow = "1"
+spin-sdk = "8.0.0"
+
+[workspace]
+
+[profile.dev]
+opt-level = 0
+debug = 2
+strip = "none"

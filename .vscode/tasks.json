@@ -1,0 +1,12 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Spin build (debug)",
+            "type": "process",
+            "command": "spin",
+            "args": ["build", "--profile", "debug"],
+            "problemMatcher": "$codelldb-rustc"
+        }
+    ]
+}

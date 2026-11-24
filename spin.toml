@@ -1,0 +1,24 @@
+#:schema https://schemas.spinframework.dev/spin/manifest-v2/latest.json
+
+spin_manifest_version = 2
+
+[application]
+name = "spin-rust-debug"
+version = "0.1.0"
+authors = ["Radu Matei <radu@fermyon.com>"]
+description = ""
+
+[[trigger.http]]
+route = "/..."
+component = "spin-rust-debug"
+
+[component.spin-rust-debug]
+source = "target/wasm32-wasip2/release/spin_rust_debug.wasm"
+allowed_outbound_hosts = []
+[component.spin-rust-debug.build]
+command = "cargo build --target wasm32-wasip2 --release"
+watch = ["src/**/*.rs", "Cargo.toml"]
+
+[component.spin-rust-debug.profile.debug]
+source = "target/wasm32-wasip2/debug/spin_rust_debug.wasm"
+build.command = "cargo build --target wasm32-wasip2"
